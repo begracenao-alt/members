@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Be Grace Members</title>
+<meta name="theme-color" content="#3a96bf" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{ --accent:#3a96bf; --accent2:#5aa8ca; --ink:#3a4750; --ink-soft:#5f7178; --line:#e6e1da; --card:#ffffff; }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{ font-family:"Shippori Mincho","Hiragino Mincho ProN",serif; color:var(--ink); min-height:100vh; line-height:2;
+    -webkit-font-smoothing:antialiased;
+    background:radial-gradient(120% 70% at 50% -6%, #ffffff 0%, rgba(255,255,255,0) 55%),
+      linear-gradient(160deg, #fcfbf9 0%, #f5f3ef 55%, #efece6 100%); background-attachment:fixed; }
+  .wrap{ max-width:480px; margin:0 auto; padding:42px 22px 56px; }
+
+  .brand{ text-align:center; }
+  .brand .mark{ font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:40px; color:var(--accent); line-height:1; }
+  .brand .h1{ font-family:"Shippori Mincho",serif; font-weight:600; font-size:17px; margin-top:13px; letter-spacing:.08em; }
+  .brand .line{ width:46px; height:1px; margin:18px auto 0; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.7; }
+  .intro{ text-align:center; font-size:13.5px; line-height:2.15; color:var(--ink-soft); margin:22px 4px 4px; }
+
+  /* セクション見出し（①②③） */
+  .sec{ display:flex; align-items:center; gap:11px; margin:42px 2px 14px; }
+  .sec .no{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:30px; color:var(--accent); line-height:1; }
+  .sec .st{ font-family:"Shippori Mincho",serif; font-weight:600; font-size:18px; }
+  .sec::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent); }
+
+  .panel{ background:var(--card); border:1px solid var(--line); border-radius:20px; box-shadow:0 16px 40px -26px rgba(80,70,60,.5); padding:22px 20px; }
+  .panel p{ font-size:13.5px; line-height:2.1; color:var(--ink-soft); }
+  .panel p .hl{ color:var(--ink); font-weight:600; }
+  .panel p .q{ display:block; color:var(--accent); margin:9px 0; }
+
+  .btn{ display:flex; align-items:center; gap:13px; text-decoration:none; color:#355f72; margin-top:14px; border-radius:15px; padding:16px 17px;
+    background:linear-gradient(100deg,#a9c8d8 16%,#dde9ef 43%,#fbfdff 50%,#dde9ef 57%,#a9c8d8 84%); background-size:220% auto;
+    animation:shimmer 6.5s linear infinite; box-shadow:0 12px 26px -14px rgba(90,140,165,.55); }
+  @keyframes shimmer{ to{ background-position:-220% center; } }
+  @media (prefers-reduced-motion:reduce){ .btn,.submit{ animation:none; } }
+  .btn .ico{ width:28px; display:flex; justify-content:center; color:#355f72; } .btn .ico svg{ width:22px; height:22px; }
+  .btn .t b{ display:block; font-size:14.5px; font-weight:600; color:#2f5668; } .btn .t small{ display:block; font-size:11.5px; color:rgba(50,85,100,.8); margin-top:2px; }
+  .btn .arr{ margin-left:auto; color:#355f72; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:18px; }
+
+  .caution{ margin-top:14px; font-size:12px; line-height:1.95; color:var(--ink-soft); background:#fbf7ee; border:1px solid #ecdfc6; border-radius:12px; padding:13px 14px; }
+  .caution b{ color:var(--ink); font-weight:600; }
+
+  /* 使い方（部屋カード） */
+  .room{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--rc); border-radius:16px;
+    box-shadow:0 12px 30px -26px rgba(80,70,60,.5); padding:18px 17px; margin-top:12px; }
+  .room-h{ display:flex; align-items:center; gap:9px; }
+  .room-h .num{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:20px; color:var(--rc); line-height:1; }
+  .room-h .rname{ font-family:"Shippori Mincho",serif; font-weight:600; font-size:17px; color:var(--ink); }
+  .room-h .en{ font-size:10px; color:var(--ink-soft); letter-spacing:.14em; }
+  .chakra{ display:inline-flex; align-items:center; gap:6px; margin:9px 0 10px; font-size:11px; color:var(--rc);
+    background:color-mix(in srgb, var(--rc) 10%, #fff); border:1px solid color-mix(in srgb, var(--rc) 28%, #fff); border-radius:999px; padding:4px 10px; }
+  .chakra .cdot{ width:8px; height:8px; border-radius:50%; background:var(--rc); flex:none; }
+  .rdesc{ font-size:12.5px; line-height:2; color:var(--ink); }
+  .rdesc .mini{ display:block; font-size:11px; color:var(--ink-soft); margin-top:7px; line-height:1.85; }
+
+  /* 申し込みフォーム */
+  .field{ margin-bottom:14px; }
+  .field > label{ display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+  .field > label .opt{ font-weight:400; font-size:11px; color:var(--ink-soft); margin-left:5px; }
+  .field .hint{ font-size:11px; color:var(--ink-soft); margin-top:5px; line-height:1.8; }
+  .kibou{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+  .kibou .kl{ flex:none; width:58px; font-size:12px; color:var(--ink-soft); }
+  input[type=text], textarea{ width:100%; font-family:"Shippori Mincho",serif; font-size:15px; color:var(--ink);
+    border:1px solid #dbe9f0; border-radius:12px; background:#fbfdff; padding:11px 13px; }
+  textarea{ min-height:74px; resize:vertical; line-height:1.8; }
+  input:focus, textarea:focus{ outline:none; border-color:var(--accent); background:#fff; }
+  .submit{ display:block; width:100%; font-family:"Shippori Mincho",serif; font-size:15.5px; font-weight:600; color:#2f5668;
+    border:none; border-radius:14px; padding:15px; cursor:pointer; margin-top:6px;
+    background:linear-gradient(100deg,#a9c8d8 16%,#dde9ef 43%,#fbfdff 50%,#dde9ef 57%,#a9c8d8 84%); background-size:220% auto; animation:shimmer 6.5s linear infinite; box-shadow:0 12px 26px -14px rgba(90,140,165,.55); }
+  .submit:active{ transform:translateY(1px); } .submit:disabled{ opacity:.6; }
+  .form-note{ font-size:11px; color:var(--ink-soft); margin-top:11px; line-height:1.8; text-align:center; }
+  .thanks{ display:none; text-align:center; padding:8px 4px; }
+  .thanks .big{ font-family:"Shippori Mincho",serif; font-size:17px; font-weight:600; color:var(--accent); margin-bottom:10px; }
+  .thanks p{ font-size:13px; color:var(--ink); line-height:2; }
+
+  .foot{ text-align:center; margin-top:38px; font-size:13px; color:var(--ink-soft); line-height:2; }
+  .foot .fmark{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:16px; color:var(--accent); }
+  .draftnote{ text-align:center; font-size:11px; color:#b3aca3; margin-top:18px; line-height:1.9; }
+  .guide > summary{ list-style:none; cursor:pointer; text-align:center; font-size:13px; font-weight:600; color:var(--accent);
+    background:var(--card); border:1px solid var(--line); border-radius:999px; padding:13px 18px; box-shadow:0 8px 20px -16px rgba(58,150,191,.4); }
+  .guide > summary::-webkit-details-marker{ display:none; }
+  .guide > summary::after{ content:"　▾"; color:var(--ink-soft); }
+  .guide[open] > summary::after{ content:"　▴"; }
+  .guide-body{ margin-top:4px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">Be Grace</div>
+      <div class="line"></div>
+    </div>
+    <div class="intro">
+      みなさまが、日常の中でも自分を整えながら、<br>
+      運動も人生も、もっと楽しく創造していけるように。<br>
+      この会員サイトをご用意しました。<br><br>
+      あなたのペースで、<br>必要な時に、自由に活用してください🤍
+    </div>
+    <!-- ① アプリ -->
+    <div class="sec"><span class="no">1</span><span class="st">アプリ</span></div>
+    <div class="panel">
+      <p>下のボタンから、<span class="hl">Be Grace Members（7つのお部屋）</span>がひらきます。スマホの「ホーム画面に追加」やお気に入りに入れておくと、いつでもすぐ開けて便利です。</p>
+      <a class="btn" href="https://begracenao-alt.github.io/world/" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></span>
+        <span class="t"><b>Be Grace Members をひらく</b><small>7つのお部屋へ</small></span><span class="arr">→</span>
+      </a>
+      <div class="caution">※大切なお願い🤍　記録（運動時間・ダイアリーなど）は、<b>開いた場所ごと</b>に保存されます。「ホーム画面に追加」したアプリと、Safari（ブラウザ）で開いたものでは、<b>記録が別々</b>になります。いつも<b>同じ開き方</b>で使ってくださいね😊</div>
+    </div>
+
+    <!-- ② 説明（使い方・折りたたみ） -->
+    <div class="sec"><span class="no">2</span><span class="st">使い方</span></div>
+    <details class="guide"><summary>各お部屋の説明をひらく（タップ）</summary>
+    <div class="guide-body">
+
+    <div class="room" style="--rc:#c46b72">
+      <div class="room-h"><span class="num">①</span><span class="rname">體</span><span class="en">KARADA</span></div>
+      <div class="chakra"><span class="cdot"></span>赤・第1チャクラ（ルート）／ 土台</div>
+      <div class="rdesc">まずはここから😊　毎日の運動やリセット習慣のお供に。メトロノーム・タイマー・528Hzをご用意。運動時間は毎日積み立てられます。
+        <span class="mini">※YouTube再生中は、メトロノーム・528Hzは同時に使えません。<br>※528Hzは「愛の周波数」とも呼ばれ、心とカラダをやさしく整える音といわれています。</span>
+        <span class="mini">🔴 赤は、大地につながる根っこの色。カラダを整えることは、生きる土台を整えること。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#6f74b8">
+      <div class="room-h"><span class="num">②</span><span class="rname">潜在意識</span><span class="en">SENZAI</span></div>
+      <div class="chakra"><span class="cdot"></span>藍・第6チャクラ（第三の目）／ 直感</div>
+      <div class="rdesc">まずは潜在意識タイプ診断から✨ これから瞑想や資料なども、少しずつ追加します。必要な時に、いつでも戻ってきてください🤍
+        <span class="mini">🔵 藍は、眉間・第三の目の色。直感と内なる声につながる場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#6fae8f">
+      <div class="room-h"><span class="num">③</span><span class="rname">LOVE</span><span class="en">LOVE</span></div>
+      <div class="chakra"><span class="cdot"></span>緑・第4チャクラ（ハート）／ 愛</div>
+      <div class="rdesc">受け取り上手なカラダへ🤍 今日の過ごし方のヒントや、相性占いも楽しんでください。
+        <span class="mini">💚 緑は、胸の中心・ハートの色。愛を素直に受け取る場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#d6b35c">
+      <div class="room-h"><span class="num">④</span><span class="rname">美</span><span class="en">BEAUTY</span></div>
+      <div class="chakra"><span class="cdot"></span>黄金・第3チャクラ（太陽神経叢）／ 輝き</div>
+      <div class="rdesc">美容で気になることがあれば、まずはこちら😊 毎日の美容習慣も、少しずつ積み重ねていきましょう。
+        <span class="mini">💛 黄金は、みぞおち・自分の輝きの色。内側からの美しさが目覚める場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#5aa8ca">
+      <div class="room-h"><span class="num">⑤</span><span class="rname">巡り</span><span class="en">MEGURI</span></div>
+      <div class="chakra"><span class="cdot"></span>水色・第5チャクラ（喉）／ 流れ</div>
+      <div class="rdesc">気になるテーマを選びながら、今日も深呼吸をひとつ。心も、お金も、時間も、気持ちよく巡らせていきましょう🤍
+        <span class="mini">💧 水色は、喉・呼吸と流れの色。とどこおりを手放す場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#9b85c0">
+      <div class="room-h"><span class="num">⑥</span><span class="rname">今日の私</span><span class="en">KYOU</span></div>
+      <div class="chakra"><span class="cdot"></span>紫・第7チャクラ（クラウン）／ 気づき</div>
+      <div class="rdesc">朝に取り入れるのがおすすめです✨ 今の自分を知ることで、今日の過ごし方が見えてきます。14日・28日ごとに傾向も確認できます。自分の気持ちに気づく時間として、活用してください😊
+        <span class="mini">💜 紫は、頭のてっぺん・クラウンの色。今の自分に気づく場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#df9b63">
+      <div class="room-h"><span class="num">⑦</span><span class="rname">DIARY</span><span class="en">DIARY</span></div>
+      <div class="chakra"><span class="cdot"></span>橙・第2チャクラ（仙骨）／ 創造</div>
+      <div class="rdesc">Be Graceオリジナルダイアリーです。毎日の記録や気づきを重ねながら、学びを日常へ。未来の自分を、少しずつ育てていきましょう🤍
+        <span class="mini">🧡 橙は、おへその下・創造の色。なりたい未来を生み出す場所です。</span>
+      </div>
+    </div>
+    <div class="room" style="--rc:#a6a29b">
+      <div class="room-h"><span class="rname">LIBRARY</span><span class="en">資料・動画</span></div>
+      <div class="rdesc" style="margin-top:8px">これから資料や動画などを、少しずつ追加していきます。必要な時に、いつでも見返してください。</div>
+    </div>
+    <div class="room" style="--rc:#a6a29b">
+      <div class="room-h"><span class="rname">GUIDE</span></div>
+      <div class="rdesc" style="margin-top:8px">今すぐ気持ちを整理したいときに。<br>なおの考え方をもとに、今のあなたに必要な視点を見つけるAIです😊<br><br>迷ったときは、もちろん直接なおに連絡してもらっても大丈夫です🤍</div>
+    </div>
+
+    </div>
+    </details>
+
+    <!-- ③ 申し込み -->
+    <div class="sec"><span class="no">3</span><span class="st">無料個別サポート</span></div>
+    <div class="panel">
+      <p>会員サイトやアプリは、見るだけではなく、日常の中で使い続けることで、少しずつ変化につながっていきます🤍
+        <span class="q">「どこから使えばいい？」<br>「私には何が合っている？」<br>「一緒に使い方を確認してほしい」</span>
+        そんな時は、個別Zoomで一緒に見ていきましょう😊 必要だと感じたタイミングで、いつでもお気軽に。</p>
+      <div id="formArea">
+        <div class="field"><label for="f_name">お名前</label><input type="text" id="f_name" placeholder="例：なお" /></div>
+        <div class="field">
+          <label>ご希望日時</label>
+          <div class="kibou"><span class="kl">第1希望</span><input type="text" id="f_k1" placeholder="例：7月8日（火）10:00〜12:00" /></div>
+          <div class="kibou"><span class="kl">第2希望</span><input type="text" id="f_k2" placeholder="例：7月10日（木）20:00以降" /></div>
+          <div class="kibou"><span class="kl">第3希望</span><input type="text" id="f_k3" placeholder="例：土日の午前中　など" /></div>
+          <div class="hint">※だいたいのご希望で大丈夫です🤍（受付：10〜21時／水曜はお休み）</div>
+        </div>
+        <div class="field"><label for="f_msg">ひとこと・ご質問 <span class="opt">（任意）</span></label>
+          <textarea id="f_msg" placeholder="聞いてみたいことや、今の状態・気になっていることなど、自由にご記入ください。"></textarea></div>
+        <button class="submit" id="submitBtn">申し込む</button>
+        <div class="form-note">※送信後、なおから日程調整のご連絡をさせていただきます😊</div>
+      </div>
+      <div class="thanks" id="thanks">
+        <div class="big">お申し込み、ありがとうございます🤍</div>
+        <p>たしかに受け取りました。このあと、なおから日程調整のご連絡をさせていただきます😊</p>
+      </div>
+    </div>
+
+    <div class="foot"><span class="fmark">Be Grace</span><br>本来の自分に還る場所🤍</div>
+    <div class="draftnote">＊下書きです。申し込みの「届く裏方（Google）」は、このあと設定します。</div>
+  </div>
+
+<script>
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbwgcIrNCpjRZMeB069gP9xD5MM0pzHrhCMXfYXR6Q_Mcs1AtCrlZZ8bUJnj1ez2MdrFoA/exec";
+  var btn = document.getElementById("submitBtn");
+  btn.addEventListener("click", function(){
+    var name=document.getElementById("f_name").value.trim();
+    var k1=document.getElementById("f_k1").value.trim();
+    var k2=document.getElementById("f_k2").value.trim();
+    var k3=document.getElementById("f_k3").value.trim();
+    var msg=document.getElementById("f_msg").value.trim();
+    if(!name){ alert("お名前を入れてくださいね🤍"); return; }
+    if(!k1){ alert("第1希望の日時を入れてくださいね🤍"); return; }
+    btn.disabled=true; btn.textContent="送信中…";
+    var data={name:name,kibou1:k1,kibou2:k2,kibou3:k3,message:msg,at:new Date().toLocaleString("ja-JP")};
+    function done(){ document.getElementById("formArea").style.display="none"; document.getElementById("thanks").style.display="block"; }
+    if(!ENDPOINT){ alert("（下書き：送信先はこれから設定します）\n\nお名前: "+name+"\n第1希望: "+k1+"\n第2希望: "+(k2||"なし")+"\n第3希望: "+(k3||"なし")+"\nひとこと: "+(msg||"なし")); btn.disabled=false; btn.textContent="申し込む"; return; }
+    fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)}).then(done).catch(done);
+  });
+</script>
+</body>
+</html>
